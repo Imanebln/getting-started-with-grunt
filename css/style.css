@@ -1,0 +1,39 @@
+* {
+  font-family: "Nunito Sans";
+}
+input {
+  margin-bottom: 3rem;
+}
+
+.text-center {
+  margin-bottom: 2.5rem;
+  font-weight: 700;
+}
+
+#movies img,
+#movie img {
+  width: 100%;
+  object-fit: cover;
+}
+
+#movie {
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 960px) {
+  #movies .col-md-3 .well {
+    height: 390px;
+  }
+
+  #movies .col-md-3 img {
+    height: 300px;
+  }
+}
+.navbar {
+  height: 100px;
+}
+.navbar-brand {
+  color: #fff;
+  font-size: 30px;
+  font-weight: 700;
+}
