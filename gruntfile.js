@@ -54,6 +54,22 @@ module.exports = function (grunt) {
     grunt.log.writeln(this.target + ": " + this.data);
   });
 
+  // register basic task
+  // When a basic task is run, Grunt doesn't look at the configuration or environment
+  // it just runs the specified task function
+
+  grunt.registerTask(
+    "foo",
+    "A sample task that logs stuff.",
+    function (arg1, arg2) {
+      if (arguments.length === 0) {
+        grunt.log.writeln(this.name + ", no args");
+      } else {
+        grunt.log.writeln(this.name + ", " + arg1 + " " + arg2);
+      }
+    }
+  );
+
   // load plugin that provide "uglify" task
   grunt.loadNpmTasks("grunt-contrib-uglify");
 
