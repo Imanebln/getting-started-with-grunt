@@ -8,6 +8,12 @@ module.exports = function (grunt) {
         dest: "js/index.min.js",
       },
     },
+    concat: {
+      dist: {
+        src: ["js/index.js", "js/index2.js"],
+        dest: "js/index3.js",
+      },
+    },
     watch: {
       scripts: {
         files: ["js/index.js", "css/style.css"],
@@ -90,6 +96,8 @@ module.exports = function (grunt) {
       done();
     }, 1000);
   });
+  // register alias tasks
+  grunt.registerTask("dist", ["concat", "uglify"]);
 
   // load plugin that provide "uglify" task
   grunt.loadNpmTasks("grunt-contrib-uglify");
@@ -102,6 +110,9 @@ module.exports = function (grunt) {
 
   // load plugin that provide "watch" task
   grunt.loadNpmTasks("grunt-contrib-watch");
+
+  // load plugin that provide "concat" task
+  grunt.loadNpmTasks("grunt-contrib-concat");
 
   // default tasks
   grunt.registerTask("default", ["uglify"]);
