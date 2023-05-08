@@ -42,6 +42,16 @@ module.exports = function (grunt) {
         ],
       },
     },
+    log: {
+      foo: [1, 2, 3],
+      bar: "hello world",
+      baz: false,
+    },
+  });
+
+  // register multi task
+  grunt.registerMultiTask("log", "Log stuff.", function () {
+    grunt.log.writeln(this.target + ": " + this.data);
   });
 
   // load plugin that provide "uglify" task
