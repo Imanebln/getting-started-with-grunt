@@ -70,6 +70,27 @@ module.exports = function (grunt) {
     }
   );
 
+  // register custom tasks
+  grunt.registerTask("foo", 'My "foo" task.', function () {
+    // Enqueue "bar" and "baz" tasks, to run after "foo" finishes, in-order.
+    grunt.task.run("bar", "baz");
+    // Or:
+    grunt.task.run(["bar", "baz"]);
+  });
+
+  // register asynchronous tasks
+  grunt.registerTask("asyncfoo", 'My "asyncfoo" task.', function () {
+    // Force task into async mode and grab a handle to the "done" function.
+    var done = this.async();
+    // Run some sync stuff.
+    grunt.log.writeln("Processing task...");
+    // And some async stuff.
+    setTimeout(function () {
+      grunt.log.writeln("All done!");
+      done();
+    }, 1000);
+  });
+
   // load plugin that provide "uglify" task
   grunt.loadNpmTasks("grunt-contrib-uglify");
 
