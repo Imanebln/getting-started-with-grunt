@@ -53,6 +53,16 @@ module.exports = function (grunt) {
       bar: "hello world",
       baz: false,
     },
+    less: {
+      development: {
+        options: {
+          paths: ["css"],
+        },
+        files: {
+          "css/result.css": "css/source.less",
+        },
+      },
+    },
   });
 
   // register multi task
@@ -113,6 +123,9 @@ module.exports = function (grunt) {
 
   // load plugin that provide "concat" task
   grunt.loadNpmTasks("grunt-contrib-concat");
+
+  // load plugin that provide "less" task
+  grunt.loadNpmTasks("grunt-contrib-less");
 
   // default tasks
   grunt.registerTask("default", ["uglify"]);
